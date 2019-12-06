@@ -20,7 +20,6 @@ def main():
 		PIR_Out = 1; reed = 1
 	else:
 		print("error")
-	
         #reed = int(raw_temp_bytes[0], 16)
 	#PIR_Out = int(raw_temp_bytes[5], 16)
 	light_2 = int(raw_temp_bytes[0], 16)
