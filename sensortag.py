@@ -283,7 +283,7 @@ class BarometerSensorBMP280(SensorBase):
         (tL,tM,tH,pL,pM,pH) = struct.unpack('<BBBBBB', self.data.read())
         temp = (tH*65536 + tM*256 + tL) / 100.0
         press = (pH*65536 + pM*256 + pL) / 100.0
-        #print("here")
+        print("here")
         batt_conversion(tL,tM,tH,pL,pM,pH,Name)
         return (tL,tM,tH,pL,pM,pH)
         #return (temp, press)
