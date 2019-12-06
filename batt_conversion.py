@@ -1,0 +1,28 @@
+#!/usr/bin/python
+
+import sys
+
+def main():
+	raw_temp_data = sys.argv[1]	# Start with raw data from SensorTag
+	raw_temp_bytes = raw_temp_data.split() # Split into individual bytes
+	batt_percent = int(raw_temp_bytes[2], 16)
+	PIR_reed = int(raw_temp_bytes[3], 16)
+  if PIR_reed == 0:
+      PIR_Out = 0; reed = 0
+  elif PIR_reed == 1:
+      PIR_Out = 1; reed = 0
+  elif PIR_reed == 2:
+      PIR_Out = 0; reed = 1
+  elif PIR_reed == 3:
+      PIR_Out = 1; reed = 1
+  else:
+      print("error")
+	light_2 = int(raw_temp_bytes[3], 16)
+	light_1 = int(raw_temp_bytes[4], 16)
+	light = (light_1 << 8) | (light_2);
+	#light = light*4  # if you use an external case
+	light = light
+	print str(0)+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light"
+	
+main()
+
