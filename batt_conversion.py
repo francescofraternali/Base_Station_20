@@ -9,6 +9,7 @@ def main():
 	batt_percent = int(raw_temp_bytes[2], 16)
 	#print("batt", batt_percent)
 	PIR_reed = int(raw_temp_bytes[3], 16)
+	print("PIR_reed", PIR_reed)
 	if PIR_reed == 0:
 		PIR_Out = 0; reed = 0
 	elif PIR_reed == 1:
@@ -17,6 +18,8 @@ def main():
 		PIR_Out = 0; reed = 1
 	elif PIR_reed == 3:
 		PIR_Out = 1; reed = 1
+	else:
+		print("error")
 	
         #reed = int(raw_temp_bytes[0], 16)
 	#PIR_Out = int(raw_temp_bytes[5], 16)
