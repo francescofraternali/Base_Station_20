@@ -5,11 +5,11 @@
 #cd /home/francesco/Dropbox/EH/Software/My_Code/Version_3_Light/
 
 reqtemp(){ #Temp sensor
-	sudo gatttool -b $ID --char-write-req -a 0x24 -n 01 #initiates (0x24)
+	sudo gatttool -b $ID --char-write-req -a 0x24 -n 01 >/dev/null 2>&1 #initiates (0x24)
 	sleep 0.5
 	tempOutput="$(sudo gatttool -b $ID --char-read -a 0x21)" #collects (0x21)
 	sleep 0.2
-	sudo gatttool -b $ID --char-write-req -a 0x24 -n 00 #disables (0x24)
+	sudo gatttool -b $ID --char-write-req -a 0x24 -n 00 >/dev/null 2>&1 #disables (0x24)
 
 	# Manipulating data
 	outputPrefix="Characteristic value/descriptor: "
