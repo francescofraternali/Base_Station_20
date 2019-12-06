@@ -14,7 +14,7 @@ reqtemp(){ #Temp sensor
 	# Manipulating data
 	outputPrefix="Characteristic value/descriptor: "
 	raw_temp_data=${tempOutput#$outputPrefix} #Removes prefix of tempOutput
-	/bin/echo ${raw_temp_data} # raw temp bytes from sensortag
+	#/bin/echo ${raw_temp_data} # raw temp bytes from sensortag
 	celsius="$(python batt_conversion.py "${raw_temp_data}")" # Converts raw_temp_data to celsius
 }
 reqlux(){	#Lux sensor
@@ -91,8 +91,8 @@ Occupancy()
 	reqtemp		
 	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
-    	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
-    	printf "\n${dt}|${log}|${celsius}|${lux}|${bar}|${raw_hum_data}|${raw_bar_data}" >> $File #prints $
+    	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_temp_data}|${raw_bar_data}" # prints data in celsius a$
+    	printf "\n${dt}|${log}|${celsius}|${lux}|${bar}|${raw_temp_data}|${raw_bar_data}" >> $File #prints $
     	echo "2" > wait.txt
 	#		sleep 10
 	#fi
