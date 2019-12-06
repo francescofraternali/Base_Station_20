@@ -5,7 +5,9 @@ import sys
 def main():
 	raw_temp_data = sys.argv[1]	# Start with raw data from SensorTag
 	raw_temp_bytes = raw_temp_data.split() # Split into individual bytes
+	print("raw", raw_temp_bytes)
 	batt_percent = int(raw_temp_bytes[2], 16)
+	print("batt", batt_percent)
 	PIR_reed = int(raw_temp_bytes[3], 16)
 	if PIR_reed == 0:
 		PIR_Out = 0; reed = 0
@@ -26,4 +28,3 @@ def main():
 	print str(performance)+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light"
 	
 main()
-
