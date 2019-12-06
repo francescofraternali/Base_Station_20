@@ -5,11 +5,11 @@
 #cd /home/francesco/Dropbox/EH/Software/My_Code/Version_3_Light/
 
 reqtemp(){ #Temp sensor
-	gatttool -b $Sensor --char-write-req -a 0x0024 -n 01 #initiates (0x24)
+	sudo gatttool -b $ID --char-write-req -a 0x24 -n 01 #initiates (0x24)
 	sleep 0.5
-	tempOutput="$(sudo gatttool -b $Sensor --char-read -a 0x0021)" #collects (0x21)
+	tempOutput="$(sudo gatttool -b $ID --char-read -a 0x21)" #collects (0x21)
 	sleep 0.2
-	gatttool -b $Sensor --char-write-req -a 0x0024 -n 00 #disables (0x24)
+	sudo gatttool -b $ID --char-write-req -a 0x24 -n 00 #disables (0x24)
 
 	# Manipulating data
 	outputPrefix="Characteristic value/descriptor: "
@@ -87,8 +87,8 @@ Occupancy()
 
         echo "1" > wait.txt
 	
-	reqbar
-	#reqtemp		
+	#reqbar
+	reqtemp		
 	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
     	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
