@@ -87,8 +87,8 @@ Occupancy()
 
         echo "1" > wait.txt
 	
-	#reqbar
-	reqtemp		
+	reqbar
+	#reqtemp		
 	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
     	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
