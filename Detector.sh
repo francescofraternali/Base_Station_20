@@ -14,7 +14,7 @@ reqtemp(){ #Temp sensor
 	# Manipulating data
 	outputPrefix="Characteristic value/descriptor: "
 	raw_temp_data=${tempOutput#$outputPrefix} #Removes prefix of tempOutput
-	#/bin/echo ${raw_temp_data} # raw temp bytes from sensortag
+	/bin/echo ${raw_temp_data} # raw temp bytes from sensortag
 	celsius="$(python batt_conversion.py "${raw_temp_data}")" # Converts raw_temp_data to celsius
 }
 reqlux(){	#Lux sensor
