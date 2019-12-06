@@ -9,7 +9,7 @@ def main():
 	batt_percent = int(raw_temp_bytes[2], 16)
 	#print("batt", batt_percent)
 	PIR_reed = int(raw_temp_bytes[3], 16)
-	print("PIR_reed", PIR_reed)
+	#print("PIR_reed", PIR_reed)
 	if PIR_reed == 0:
 		PIR_Out = 0; reed = 0
 	elif PIR_reed == 1:
@@ -28,6 +28,6 @@ def main():
 	light = (light_1 << 8) | (light_2);
 	#light = light*4  # if you use an external case
 	light = light
-	print str(performance)+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light"
+	print(str(performance)+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light")
 	
 main()
