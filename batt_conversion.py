@@ -3,6 +3,7 @@
 import sys
 
 def main():
+	print("here)
 	raw_temp_data = sys.argv[1]	# Start with raw data from SensorTag
 	raw_temp_bytes = raw_temp_data.split() # Split into individual bytes
 	print("raw", raw_temp_bytes)
