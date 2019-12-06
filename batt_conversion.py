@@ -3,7 +3,7 @@
 import sys
 
 def main():
-	print("here)
+	print("here")
 	raw_temp_data = sys.argv[1]	# Start with raw data from SensorTag
 	raw_temp_bytes = raw_temp_data.split() # Split into individual bytes
 	print("raw", raw_temp_bytes)
@@ -17,7 +17,7 @@ def main():
 	elif PIR_reed == 2:
 		PIR_Out = 0; reed = 1
 	elif PIR_reed == 3:
-		PIR_Out = 1, reed = 1
+		PIR_Out = 1; reed = 1
 	
         #reed = int(raw_temp_bytes[0], 16)
 	#PIR_Out = int(raw_temp_bytes[5], 16)
