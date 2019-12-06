@@ -7,7 +7,7 @@ import time
 import datetime
 from subprocess import PIPE
 
-path = '/home/pi/BLE_GIT/Base_Station/'
+path = '/home/pi/BLE_GIT/Base_Station_20/'
 ID_List = []
 Name_List = []
 File_List = []
