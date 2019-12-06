@@ -91,9 +91,8 @@ Occupancy()
 	reqtemp		
 	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
-	echo "inside Loop"
-    	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_temp_data}|${raw_bar_data}" # prints data in celsius a$
-    	printf "\n${dt}|${log}|${celsius}|${lux}|${bar}|${raw_temp_data}|${raw_bar_data}" >> $File #prints $
+    	echo "${dt}|${log}|${bar} bar|${hum} hum|${celsius}|${raw_temp_data}|${raw_bar_data}" # prints data in celsius a$
+    	printf "\n${dt}|${log}|${bar}|${hum}|${celsius}|${raw_temp_data}|${raw_bar_data}" >> $File #prints $
     	echo "2" > wait.txt
 	#		sleep 10
 	#fi
