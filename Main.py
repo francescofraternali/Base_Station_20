@@ -292,7 +292,6 @@ while(True):
         continue
 
     sleep(1)
-    ''' # reboot BS in case
     countarell += 1
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
         try:
@@ -302,7 +301,7 @@ while(True):
 
         countarell = 0
         sleep(1)
-    '''
+
 print("It's Over")
 
 #sudo hciconfig hci0 reset
