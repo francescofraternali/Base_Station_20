@@ -88,6 +88,7 @@ def check():
                 sleep(0.5)
         sleep(0.5)
 
+'''
 def get_raw_data(ID):
     with open('wait.txt', 'w') as f:
         f.write('0')
@@ -100,18 +101,18 @@ def get_raw_data(ID):
             break
 
     with open('ID.txt', 'r') as f:
-        Action = '-1'
+        Action_1 = '-1'
         for line in f:
             line = line.strip()
             splt = line.split(',')
             if Name == splt[0]:
                 #print(splt[0], splt[2])
-                Action = splt[2]
+                Action_1 = splt[2]
                 break
 
-        if Action == '-1':
+        if Action_1 == '-1':
             print("Pay Attention: Name and Action not found")
-            Action = '0'
+            #Action = '51'
 
     #print("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action)
     subprocess.Popen("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action+" &", shell=True)
@@ -122,6 +123,7 @@ def get_raw_data(ID):
     #print('checking over')
     killer()
     sleep(0.5)
+'''
 
 def get_action_name(ID):
     for i in range(len(ID_List)):
@@ -137,9 +139,10 @@ def get_action_name(ID):
             splt = line.split(',')
             if Name == splt[0]:
                 #print(splt[0], splt[2])
-                Action = splt[2]
+                Action_1 = splt[2]
+		Action_2 = splt[3]
                 break
-    return (Action, Name, File)
+    return (Action_1, Action_2, Name, File)
 
 
 def check_reboot():
@@ -202,7 +205,6 @@ count_empty = 0
 action_imposed = -1
 
 while(True):
-    #print('here')
     Name = ''
     File = ''
     #print("scanning")
@@ -227,7 +229,7 @@ while(True):
             subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
             count_empty += 1
 
-    else:
+    else: # some devices were found
         count_empty = 0
         with open("dev_found.txt", 'r') as f:
             for line in f:
@@ -241,16 +243,19 @@ while(True):
                 if ID in ID_List and ID not in avoid and ID not in found:
                         #print('trovato')
                         found.append(ID)
-                        Action, Name, File = get_action_name(ID)
+                        Action_1, Action_2, Name, File = get_action_name(ID)
                         log_temp = File.split('/')
                         log = log_temp[-1]
 
                         t = time.strftime('%m/%d/%y %H:%M:%S')
 
                         if action_imposed == 0:
-                            Action = '0'
+                            Action_1 = '3C'
+			    Action_2 = '01'
 
-                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action + " " + log + " 2>error.txt &", shell=True)
+                        #Action = "00000000"
+
+                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + log + " 2>error.txt &", shell=True)
 
 
     #print("found", found)
@@ -269,12 +274,6 @@ while(True):
             #avoid.append(ID)
             #print('avoiding ', ID)
 
-
-    #if len(found) > 0:
-    #    #for i in range(len(ID_List)):
-    #    avoid.append(found[-1])
-    #    avoid.append(found[-1])
-        #print('avoiding last ID')
     try:
     	with open('error.txt','r') as f:
             for line in f:
