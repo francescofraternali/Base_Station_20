@@ -7,7 +7,7 @@ import time
 import datetime
 from subprocess import PIPE
 
-path = '/home/pi/BLE_GIT/Base_Station_20/'
+#path = '/home/pi/Base_Station_20/Base_Station'
 ID_List = []
 Name_List = []
 File_List = []
@@ -125,6 +125,42 @@ def get_raw_data(ID):
     sleep(0.5)
 '''
 
+def heuristic_energy_manag(ID):
+    for i in range(len(ID_List)):
+        if ID == ID_List[i]:
+            Name = Name_List[i]
+            File = File_List[i]
+            break
+
+    with open('../ID/ID.txt', 'r') as f:
+        found = 0
+        for line in f:
+            line = line.strip()
+            splt = line.split(',')
+            if Name == splt[0]:
+		for line in reversed(list(open("../Data/"+splt[1]))):
+                    line_splt = line.split('|')
+                    try:
+                        volt = int(line_splt[5])
+                        if volt > 0:
+			    print(Name, volt)
+                            found = 1
+                            break
+		    except:
+                        pass
+		if found == 1:
+		    if volt >= 90:
+                        Action_1 = '8A'; Action_2 = '08';
+		    elif volt < 90 and volt >= 75:
+		        Action_1 = '8A'; Action_2 = '03';
+		    elif volt < 75:
+                        Action_1 = '0A'; Action_2 = '01';
+                break
+
+    Action_3 = splt[4]    
+
+    return (Action_1, Action_2, Action_3, Name, File)
+
 def get_action_name(ID):
     for i in range(len(ID_List)):
         if ID == ID_List[i]:
@@ -141,8 +177,9 @@ def get_action_name(ID):
                 #print(splt[0], splt[2])
                 Action_1 = splt[2]
 		Action_2 = splt[3]
+		Action_3 = splt[4]
                 break
-    return (Action_1, Action_2, Name, File)
+    return (Action_1, Action_2, Action_3, Name, File)
 
 
 def check_reboot():
@@ -175,14 +212,15 @@ def check_reboot():
         print("File does not exist. Creating it", now)
         last_reset = now
 
-    diff_1 = (now - last_bs_read_time).total_seconds()
+    #diff_1 = (now - last_bs_read_time).total_seconds()
+    diff_1 = 0
     diff_2 = (now - last_reset).total_seconds()
 
-    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/14400")
+    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
     if diff_1 > 60*60*1:  # if nobody is reading into the BS for diff_1 time then I put all actions to 0 to avoid node dying
         action_imposed = 0
         print("action imposed to 0 since bs in not reading data")
-    if diff_2 > 60*60*4:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
+    if diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was On for one day, then reboot
         with open('last_reset.txt', 'w') as f:
             f.write(now_time)
         sleep(1)
@@ -243,7 +281,8 @@ while(True):
                 if ID in ID_List and ID not in avoid and ID not in found:
                         #print('trovato')
                         found.append(ID)
-                        Action_1, Action_2, Name, File = get_action_name(ID)
+                        #Action_1, Action_2, Action_3, Name, File = get_action_name(ID)
+			Action_1, Action_2, Action_3, Name, File = heuristic_energy_manag(ID)
                         log_temp = File.split('/')
                         log = log_temp[-1]
 
@@ -252,10 +291,11 @@ while(True):
                         if action_imposed == 0:
                             Action_1 = '3C'
 			    Action_2 = '01'
+			    Action_3 = '0'
 
                         #Action = "00000000"
 
-                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + log + " 2>error.txt &", shell=True)
+                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " 2>error.txt &", shell=True)
 
 
     #print("found", found)
@@ -291,7 +331,7 @@ while(True):
         continue
 
     sleep(1)
-    ''' # reboot BS in case
+    # reboot BS in case
     countarell += 1
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
         try:
@@ -301,7 +341,7 @@ while(True):
 
         countarell = 0
         sleep(1)
-    '''
+
 print("It's Over")
 
 #sudo hciconfig hci0 reset

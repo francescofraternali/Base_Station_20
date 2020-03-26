@@ -114,9 +114,10 @@ Occupancy()
         echo "1" > wait.txt
         #reqtemp
 	#reqinfo
-
-	#reqhum
-	#reqbar
+	if [ $Action_3 == "1" ]; then
+		reqhum
+		reqbar
+	fi
         reqtemp
 
 	#Write Data
@@ -133,9 +134,10 @@ Name=$1
 ID=$2
 File=$3
 Action_1=$4
-log=$6
+log=$7
 Action_2=$5
-#echo $Action_2
+Action_3=$6
+#echo $Name
 #echo "Detector"
 Occupancy
 #echo "Over"
