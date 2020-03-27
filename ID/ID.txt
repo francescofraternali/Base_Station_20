@@ -1,1 +1,9 @@
-FF15,FF15_Test_Tesr.txt,01
+FF64,FF64_2150_DoorCeil_EH.txt,BC,03,0
+FF66,FF66_2150_Middle_EH.txt,BC,03,0
+B2,B2_2150_Middle_Batt.txt,BC,03,0
+FF16,FF16_2150_Middle2_EH.txt,BC,03,1
+FF19,FF19_2150_Middle2_Batt.txt,BC,03,1
+FF54,FF54_2154_Stairs_EH.txt,BC,03,0
+FF1,FF1_2154_Stairs_Batt.txt,BC,03,0
+FF28,FF28_2154_StairsWin_EH.txt,BC,03,1
+FF15,FF15_2154_StairsWin_BattEH.txt,BC,03,1
