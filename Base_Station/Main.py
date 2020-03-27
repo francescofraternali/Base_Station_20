@@ -161,7 +161,7 @@ def heuristic_energy_manag(ID):
                             pass
                 if found == 0: # it should not get here
                     print("No valid voltage found, either a new file, always 0 or a problem")
-		    Action_1 = '3C'; Action_2 = '03'; volt = 0
+		    Action_1 = '8C'; Action_2 = '03'; volt = 0
 
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
                 if 'Batt.txt' in file_splt or 'BattEH.txt' in file_splt:
