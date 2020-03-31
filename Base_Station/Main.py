@@ -164,7 +164,7 @@ def heuristic_energy_manag(ID):
 		    Action_1 = '8C'; Action_2 = '03'; volt = 0
 
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
-                if 'Batt.txt' in file_splt or 'BattEH.txt' in file_splt:
+                if 'Batt' in file_splt or 'BattEH' in file_splt:
                     Action_1 = 'BC'; Action_2 = '0B';
                     #print(Name, Action_1, Action_2) 
                 break
