@@ -143,9 +143,14 @@ def heuristic_energy_manag(ID):
 		    for line in reversed(list(open("../Data/"+splt[1]))):
                         line_splt = line.split('|')
                         #print(line)
+			volt_str = line_splt[5]
                         try:
                             volt = int(line_splt[5])
-                            if volt >= 90:
+			except:
+			    print("volt string: ", volt_str, ". Problem, check"
+			    volt = 0
+				  
+                        if volt >= 90:
 				Action_1 = 'BC'; Action_2 = '0B';
 			    elif volt < 90 and volt >= 75:
 	                        Action_1 = 'BC'; Action_2 = '09';
@@ -154,11 +159,10 @@ def heuristic_energy_manag(ID):
                             else:
                                 Action_1 = '3C'; Action_2 = '01';
 		            #print(Name, volt)
-                            if volt > 0:
-                                found = 1
-			        break
-                        except:
-                            pass
+                        if volt > 0:
+                            found = 1
+			    break
+				  
                 if found == 0: # it should not get here
                     print("No valid voltage found, either a new file, always 0 or a problem")
 		    Action_1 = '8C'; Action_2 = '03'; volt = 0
