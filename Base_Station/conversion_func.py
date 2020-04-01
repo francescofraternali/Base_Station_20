@@ -3,7 +3,7 @@ import sys
 import struct
 
 def info_conversion():
-    try:
+    #try:
         raw_data = sys.argv[2]	# Start with raw data from SensorTag
         raw_bytes = raw_data.split() # Split into individual bytes
         batt_percent = int(raw_bytes[2], 16)
@@ -25,10 +25,10 @@ def info_conversion():
         #light = light*4  # if you use an external case
         light = light
         print(str(int(0))+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light")
-    except Exception as e: print(e)
+    #except Exception as e: print(e)
 
 def hum_conversion():
-    try:
+    #try:
         raw_hum_data = sys.argv[2]
         raw_hum_bytes = raw_hum_data.split()
 
@@ -45,10 +45,10 @@ def hum_conversion():
         RH = 100.0 * (rawH / 65536.0)
 
         print(str(round(temp, 2)) + "|" + str(round(RH, 2)))
-    except Exception as e: print(e)
+    #except Exception as e: print(e)
 
 def bar_conversion():
-    try:
+    #try:
         raw_data = sys.argv[2] # Start with raw data from SensorTag
         raw_bytes = raw_data.split() # Split into individual bytes
         tL = int(raw_bytes[0], 16)
@@ -62,7 +62,7 @@ def bar_conversion():
         temp = (tH*65536 + tM*256 + tL) / 100.0
         press = (pH*65536 + pM*256 + pL) #/ 100.0
         print(str(temp) + "|" + str(press))
-    except Exception as e: print(e)
+    #except Exception as e: print(e)
 
 #if __name__ == '__main__':
    
