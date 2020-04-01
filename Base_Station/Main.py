@@ -268,7 +268,7 @@ while(True):
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)
     sleep(3.5)
     found = []
-    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error = 1:
+    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error == 1:
         print('dev_found empty or blescan error')
         print('blescan stderr file dimension:', os.stat('ble_err.txt').st_size)
         sleep(5)
