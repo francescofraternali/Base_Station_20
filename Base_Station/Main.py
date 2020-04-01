@@ -254,6 +254,7 @@ avoid = []  # in this list there are all the devices that have been read and tha
 countarell = 360
 count_empty = 0
 action_imposed = -1
+detector_error = 0
 
 while(True):
     Name = ''
@@ -267,7 +268,7 @@ while(True):
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)
     sleep(3.5)
     found = []
-    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1):
+    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error = 1:
         print('dev_found empty or blescan error')
         print('blescan stderr file dimension:', os.stat('ble_err.txt').st_size)
         sleep(5)
@@ -276,7 +277,7 @@ while(True):
             subprocess.Popen('sudo reboot', shell=True)
             sleep(5)
         else:
-            print('List Empty. No devices found, something wrong? Resetting BLE hci0 adapter')
+            print('List Empty. No devices found or error in Detector.sh, something wrong? Resetting BLE hci0 adapter')
             subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
             count_empty += 1
 
@@ -335,11 +336,14 @@ while(True):
                 if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
                     print(line)
                     print('something wrong, resetting')
-                    sleep(5)
+                    #sleep(5)
+		    detector_error = 1
                     os.remove('error.txt')
-                    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+                    #subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
                     sleep(5)
                     break
+		else:
+		    detector_error = 0	
     except:
         continue
 
