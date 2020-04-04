@@ -143,11 +143,11 @@ def heuristic_energy_manag(ID):
 		    for line in reversed(list(open("../Data/"+splt[1]))):
                         line_splt = line.split('|')
                         #print(line)
+			volt_str = line_splt[5]
                         try:
-			    volt_str = line_splt[5]
                             volt = int(line_splt[5])
 			except:
-			    #print("line: ", line , ". volt string: ", volt_str, ". Problem, check")
+			    print("line: ", line, ". volt string: ", volt_str, ". Problem, check")
 			    volt = 0
 
                         if volt >= 90:
@@ -161,12 +161,11 @@ def heuristic_energy_manag(ID):
 		            #print(Name, volt)
                         if volt > 0:
                             found = 1
-                            #print("final line: ", line)
 			    break
 
                 if found == 0: # it should not get here
-                    print("No valid voltage found, either a new file, always 0 or a problem") 
-                    Action_1 = '8C'; Action_2 = '03'; volt = 0
+                    print("No valid voltage found, either a new file, always 0 or a problem")
+		    Action_1 = '8C'; Action_2 = '03'; volt = 0
 
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
@@ -249,8 +248,6 @@ def check_reboot():
 
     return action_imposed
 
-
-
 print("Let us Start!!")
 
 #Reset BLE drivers
@@ -275,23 +272,24 @@ while(True):
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)
     sleep(3.5)
     found = []
-    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 7:
+    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 2:
         print('dev_found empty or blescan error')
         print("dev_found size: ", os.stat('dev_found.txt').st_size)
         print('blescan stderr file dimension: ', os.stat('ble_err.txt').st_size)
         print("detector_error: ", detector_error, " count_empty: ", count_empty)
         sleep(5)
-        if count_empty >= 10 or detector_error > 7:
-            print('List Empty. No devices found or detector_error positive for a while. Rebooting BS.')
+        if count_empty >= 10:
+            print('List Empty. No devices found for a while. Rebooting BS.')
             subprocess.Popen('sudo reboot', shell=True)
         else:
             print('something wrong? Resetting BLE hci0 adapter')
             subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
             sleep(5)
             count_empty += 1
+            detector_eror += 1
 
     else: # some devices were found
-        count_empty = 0
+
         with open("dev_found.txt", 'r') as f:
             for line in f:
                 line = line.strip()
@@ -318,35 +316,14 @@ while(True):
 
                         #Action = "00000000"
 
-                        #proc = subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " 2>error.txt &", stdout=subprocess.PIPE, shell=True)
-                        proc = subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " &", stdout=subprocess.PIPE, shell=True)
-                        (out, err) = proc.communicate()
-                        toprint = out.split('\n')
-                        print(toprint[0])
-                        #print(err)
-                        if err is not None:
-                            for line in err:
-                                print("line", line)
-                                contain = line.strip().split(' ')
-                                if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: 
-                                     detector_error += 1
-                                     print('something wrong, detector_error: ', detector_error)
-                                     sleep(12)
-                                     #if detector_error > 4: # oherwise let's put 4
-                                     subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-                                     print('something wrong, resetting')
-                                     sleep(3)
-                                     break
-                        else:
-                            if detector_error > 0: 
-                                print("no detector_error")
-                            detector_error = 0
+                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " 2>error.txt &", shell=True)
+
 
     #print("found", found)
     if len(avoid) > 0:
         #print('remove avoiding last ID')
         for ID in ID_List:
-            if ID in avoid:     
+            if ID in avoid:
                 avoid.remove(ID)
                 #print('removing ', ID)
 
@@ -358,28 +335,26 @@ while(True):
             #avoid.append(ID)
             #print('avoiding ', ID)
 
-    #if os.path.isfile("error.txt"):
-    #    with open('error.txt','r') as f:
-    #if err is not None:
-    #    for line in err:
-	#    print("line", line)
-         #   contain = line.strip().split(' ')
-          #  if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
-           #     #print(line, " Name: ", Name)
-            #    detector_error += 1
-            #    print('something wrong, detector_error: ', detector_error)
-            #    sleep(12)
-            #    #if detector_error > 4: # oherwise let's put 4
-            #    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-            #    print('something wrong, resetting') 
+    try:
+    	with open('error.txt','r') as f:
+            for line in f:
+	        #print(line)
+                contain = line.strip().split(' ')
+                if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
+                    print(line)
+                    print('something wrong, resetting')
+                    #sleep(5)
+		    detector_error += 1
+                    os.remove('error.txt')
+                    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+                    sleep(5)
+                    break
+		else:
+		    detector_error = 0
+                    count_empty = 0 # devices were found and they were able to communicate the data correctly
+    except:
+        continue
 
-            #    sleep(3)
-            #    break
-        #os.remove('error.txt')
-    #else:
-     #   if detector_error > 0:
-     #       print("no detector_error")
-     #   detector_error = 0  # devices were found and they were able to communicate the data correctly
     sleep(1)
     # reboot BS in case
     countarell += 1
