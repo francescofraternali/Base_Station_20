@@ -200,41 +200,42 @@ def get_action_name(ID):
     return (Action_1, Action_2, Action_3, Name, File)
 
 
-def check_reboot():
-    proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
+def check_reboot(last_reset):
+    #proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
+    proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password'", stdout=subprocess.PIPE, shell=True) 
     (out, err) = proc.communicate()
 
-    for line in reversed(open('Accepted_file.txt').readlines()):
-        #print(line.rstrip())
+    now = datetime.datetime.now()
+    #for line in reversed(open('Accepted_file.txt').readlines()):
+    content = out.split('\n') 
+    for line in reversed(content):
         spl = line.rstrip()
         spl = spl.split(' ')
-        if 'Accepted' in spl and spl[1].isdigit():
-            break
+        if len(spl) > 1:
+            #print(spl[1]) 
+            if 'Accepted' in spl:
+                if spl[1].isdigit():
+                    index = 1
+                else:
+                    index = 2
+                break
 
-    print(spl)
-    clock = spl[2].split(':')
+                #print(spl)
+                day = spl[index]
+                clock = spl[index+1].split(':')
 
-    now = datetime.datetime.now()
-    now_time = now.strftime('%m/%d/%y %H:%M:%S')
+                now_time = now.strftime('%m/%d/%y %H:%M:%S')
 
-    month = datetime.datetime.strptime(spl[0], '%b')
-    last_bs_read_time = datetime.datetime(int(now.year), int(month.month), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
-    if os.path.isfile('last_reset.txt'):
-        with open('last_reset.txt', 'r') as f:
-            out = f.readlines()
-        last_reset = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
-        #print("file exists", now_last)
-    else:
-        with open('last_reset.txt', 'w') as f:
-    	    f.write(now_time)
-        print("File does not exist. Creating it", now)
-        last_reset = now
+                month = datetime.datetime.strptime(spl[0], '%b')
+                last_bs_read_time = datetime.datetime(int(now.year), int(month.month), int(day), int(clock[0]), int(clock[1]), int(clock[2]))
+        else:
+            last_bs_read_time = now 
 
     #diff_1 = (now - last_bs_read_time).total_seconds()
     diff_1 = 0
     diff_2 = (now - last_reset).total_seconds()
 
-    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
+    print("checking reboot: ", str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
     if diff_1 > 60*60*1:  # if nobody is reading into the BS for diff_1 time then I put all actions to 0 to avoid node dying
         action_imposed = 0
         print("action imposed to 0 since bs in not reading data")
@@ -252,6 +253,7 @@ def check_reboot():
 
 
 print("Let us Start!!")
+last_reset = datetime.datetime.now()
 
 #Reset BLE drivers
 #subprocess.Popen("sudo hciconfig hci0 reset &", shell=True)
@@ -272,7 +274,7 @@ while(True):
     except:
         pass
     #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
-    subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)
+    subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)  #sometimes this could stuck in this loop so let's write down the file
     sleep(3.5)
     found = []
     if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 7:
@@ -358,36 +360,11 @@ while(True):
             #avoid.append(ID)
             #print('avoiding ', ID)
 
-    #if os.path.isfile("error.txt"):
-    #    with open('error.txt','r') as f:
-    #if err is not None:
-    #    for line in err:
-	#    print("line", line)
-         #   contain = line.strip().split(' ')
-          #  if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
-           #     #print(line, " Name: ", Name)
-            #    detector_error += 1
-            #    print('something wrong, detector_error: ', detector_error)
-            #    sleep(12)
-            #    #if detector_error > 4: # oherwise let's put 4
-            #    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-            #    print('something wrong, resetting') 
-
-            #    sleep(3)
-            #    break
-        #os.remove('error.txt')
-    #else:
-     #   if detector_error > 0:
-     #       print("no detector_error")
-     #   detector_error = 0  # devices were found and they were able to communicate the data correctly
     sleep(1)
     # reboot BS in case
     countarell += 1
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
-        try:
-            print("checking reboot")
-            action_imposed = check_reboot()
-        except Exception as e: print("something wrong in check_reboot with error: ", e)
+        action_imposed = check_reboot(last_reset)
 
         countarell = 0
         sleep(1)
