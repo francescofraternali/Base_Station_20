@@ -273,13 +273,13 @@ while(True):
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)  #sometimes this could stuck in this loop so let's write down the file
     sleep(3.5)
     found = []
-    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 7:
+    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 5:
         print('dev_found empty or blescan error')
         print("dev_found size: ", os.stat('dev_found.txt').st_size)
         print('blescan stderr file dimension: ', os.stat('ble_err.txt').st_size)
         print("detector_error: ", detector_error, " count_empty: ", count_empty)
         sleep(5)
-        if count_empty >= 10 or detector_error > 7:
+        if count_empty >= 10 or detector_error > 5:
             print('List Empty. No devices found or detector_error positive for a while. Rebooting BS.')
             subprocess.Popen('sudo reboot', shell=True)
         else:
@@ -324,22 +324,20 @@ while(True):
                         splitt = toprint[0].split('|')
                         error = 'list index out of range'
                         if splitt[2] == error or splitt[4] == error or splitt[10] == error:
-                            print("error detected") 
-                            for line in err:
-                                print("error detected. line: ", line) 
-                                contain = line.strip().split(' ')
-                                if (len(line.strip()) > 0) and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: # and '(38)' not in contain 
+                                     #print("error detected") 
+                                     #contain = line.strip().split(' ')
+                                #if (len(line.strip()) > 0) and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: # and '(38)' not in contain 
                                      detector_error += 1
                                      print('something wrong, detector_error: ', detector_error)
                                      sleep(12)
-                                     #if detector_error > 4: # oherwise let's put 4
-                                     subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-                                     print('something wrong, resetting')
-                                     sleep(3)
+                                     if detector_error > 2: # oherwise let's put 2
+                                         subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+                                         print('something wrong, resetting')
+                                         sleep(5)
                                      break
                         else:
                             if detector_error > 0: 
-                                print("no detector_error")
+                                print("reset detector_error")
                             detector_error = 0
 
     #print("found", found)
