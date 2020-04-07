@@ -234,19 +234,15 @@ def check_reboot(last_reset):
     #diff_1 = (now - last_bs_read_time).total_seconds()
     diff_1 = 0
     diff_2 = (now - last_reset).total_seconds()
+    action_imposed = -1
 
     print("checking reboot: ", str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
     if diff_1 > 60*60*1:  # if nobody is reading into the BS for diff_1 time then I put all actions to 0 to avoid node dying
         action_imposed = 0
         print("action imposed to 0 since bs in not reading data")
     if diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was On for one day, then reboot
-        with open('last_reset.txt', 'w') as f:
-            f.write(now_time)
-        sleep(1)
         print("Nobody wants me. Or maybe I am broken? Reeboting...")
         subprocess.Popen("sudo reboot", shell=True)
-    else:
-        action_imposed = -1
 
     return action_imposed
 
@@ -325,12 +321,14 @@ while(True):
                         (out, err) = proc.communicate()
                         toprint = out.split('\n')
                         print(toprint[0])
-                        #print(err)
-                        if err is not None:
+                        splitt = toprint[0].split('|')
+                        error = 'list index out of range'
+                        if splitt[2] == error or splitt[4] == error or splitt[10] == error:
+                            print("error detected") 
                             for line in err:
-                                print("line", line)
+                                print("error detected. line: ", line) 
                                 contain = line.strip().split(' ')
-                                if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: 
+                                if (len(line.strip()) > 0) and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: # and '(38)' not in contain 
                                      detector_error += 1
                                      print('something wrong, detector_error: ', detector_error)
                                      sleep(12)

@@ -1,0 +1,519 @@
+['FF53', '2142_Door_EH_FF53.txt', 'BC', '03', '0\n']
+['FF87', '2142_Door_EH_FF87.txt', 'BC', '03', '1\n']
+['FF17', '2142_Door_BattEH_FF17.txt', 'BC', '03', '1\n']
+['FF56', '2142_Middle_EH_FF56.txt', 'BC', '03', '0\n']
+['FF88', '2142_Middle_EH_FF88.txt', 'BC', '03', '1\n']
+['FF18', '2142_Middle_BattEH_FF18.txt', 'BC', '03', '1\n']
+['FF34', '2144_Door_EH_FF34.txt', 'BC', '03', '1\n']
+['FF32', '2142_Corridor_EH_FF32.txt', 'BC', '03', '1\n']
+File Ok Ok
+Let us Start!!
+('checking reboot: ', '0/3600, 4/86400')
+04/06/20 09:01:05|2142_Middle_BattEH_FF18.txt|21.9|53.99|0|98|0|0|159|perf-batt-PIR-reed-light|22.26|100152|08 60 38 8a |9f 00 62 00 |b2 08 00 38 87 01 
+04/06/20 09:03:15|2142_Middle_EH_FF88.txt|21.94|58.23|0|92|0|0|108|perf-batt-PIR-reed-light|22.01|100183|18 60 14 95 |6c 00 5c 00 |99 08 00 57 87 01 
+04/06/20 09:05:19|2142_Middle_BattEH_FF18.txt|21.79|54.09|0|98|0|0|173|perf-batt-PIR-reed-light|22.16|100148|e0 5f 78 8a |ad 00 62 00 |a8 08 00 34 87 01 
+No valid voltage found, either a new file, always 0 or a problem
+04/06/20 09:05:54|2144_Door_EH_FF34.txt|20.92|58.24|0|86|0|0|109|perf-batt-PIR-reed-light|21.17|100172|84 5e 18 95 |6d 00 56 00 |45 08 00 4c 87 01 
+04/06/20 09:07:31|2142_Middle_EH_FF88.txt|21.88|58.33|0|92|0|0|163|perf-batt-PIR-reed-light|21.95|100196|00 60 54 95 |a3 00 5c 00 |93 08 00 64 87 01 
+04/06/20 09:07:44|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|228|perf-batt-PIR-reed-light|22.1|100148|00 00 00 00 |e4 00 62 00 |a2 08 00 34 87 01 
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:09:23|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:11:15|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:14:49|2142_Middle_EH_FF88.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:15:01|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:16:45|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:20:42|2142_Middle_EH_FF88.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:20:54|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:23:29|2142_Middle_EH_FF88.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:24:17|2142_Middle_EH_FF88.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:24:33|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Transport endpoint is not connected (107)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:25:10|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:26:55|2142_Middle_BattEH_FF18.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:28:17|2142_Door_EH_FF53.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:28:43|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:29:08|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:29:56|2142_Middle_EH_FF88.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:30:23|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:36:30|2142_Middle_EH_FF88.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:37:05|2142_Middle_BattEH_FF18.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:38:12|2142_Door_EH_FF53.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:38:37|2142_Door_EH_FF53.txt|||||||||||||
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:39:08|2142_Middle_BattEH_FF18.txt|||||||||||||
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 76, in <module>
+    bar_conversion()
+  File "conversion_func.py", line 54, in bar_conversion
+    tL = int(raw_bytes[0], 16)
+IndexError: list index out of range
+connect error: Connection refused (111)
+Traceback (most recent call last):
+  File "conversion_func.py", line 72, in <module>
+    info_conversion()
+  File "conversion_func.py", line 9, in info_conversion
+    batt_percent = int(raw_bytes[2], 16)
+IndexError: list index out of range
+04/06/20 09:44:44|2142_Middle_EH_FF88.txt|||||||||||||
+No valid voltage found, either a new file, always 0 or a problem
+04/06/20 09:44:55|2142_Corridor_EH_FF32.txt|21.3|55.99|0|101|0|0|146|perf-batt-PIR-reed-light|21.53|100233|1c 5f 54 8f |92 00 65 00 |69 08 00 89 87 01 
+04/06/20 09:45:11|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|354|perf-batt-PIR-reed-light|22.05|100176|00 00 00 00 |62 01 62 00 |9d 08 00 50 87 01 
+04/06/20 09:45:37|2142_Middle_EH_FF88.txt|21.8|58.33|0|92|0|0|253|perf-batt-PIR-reed-light|21.88|100221|e4 5f 54 95 |fd 00 5c 00 |8c 08 00 7d 87 01 
+No valid voltage found, either a new file, always 0 or a problem
+04/06/20 09:45:53|2142_Door_EH_FF53.txt|||0|98|0|0|82|perf-batt-PIR-reed-light||||52 00 62 00 |
+04/06/20 09:46:14|2142_Corridor_EH_FF32.txt|21.32|55.99|0|101|1|0|143|perf-batt-PIR-reed-light|21.53|100236|24 5f 54 8f |8f 00 65 01 |69 08 00 8c 87 01 
+04/06/20 09:46:27|2142_Middle_BattEH_FF18.txt|21.68|54.16|0|98|0|0|388|perf-batt-PIR-reed-light|22.05|100176|b4 5f a4 8a |84 01 62 00 |9d 08 00 50 87 01 
+04/06/20 09:47:42|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|490|perf-batt-PIR-reed-light|22.05|100176|00 00 00 00 |ea 01 62 00 |9d 08 00 50 87 01 
+04/06/20 09:47:54|2142_Middle_EH_FF88.txt|21.82|58.33|0|92|0|0|348|perf-batt-PIR-reed-light|21.89|100222|ec 5f 54 95 |5c 01 5c 00 |8d 08 00 7e 87 01 
+04/06/20 09:49:09|2144_Door_EH_FF34.txt|21.0|57.67|0|86|0|0|188|perf-batt-PIR-reed-light|21.23|100205|a4 5e a0 93 |bc 00 56 00 |4b 08 00 6d 87 01 
+04/06/20 09:54:59|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|427|perf-batt-PIR-reed-light|22.11|100180|00 00 00 00 |ab 01 62 00 |a3 08 00 54 87 01 
+04/06/20 09:57:14|2142_Middle_BattEH_FF18.txt|21.75|53.99|0|98|0|0|489|perf-batt-PIR-reed-light|22.13|100181|d0 5f 38 8a |e9 01 62 00 |a5 08 00 55 87 01 
+04/06/20 09:57:26|2142_Door_EH_FF87.txt|21.7|62.45|0|64|0|0|161|perf-batt-PIR-reed-light|21.87|100234|bc 5f dc 9f |a1 00 40 00 |8b 08 00 8a 87 01 
+04/06/20 09:58:06|2142_Door_EH_FF53.txt|||0|98|0|0|91|perf-batt-PIR-reed-light||||5b 00 62 00 |
+('checking reboot: ', '0/3600, 3659/86400')
+04/06/20 09:59:32|2142_Middle_BattEH_FF18.txt|21.75|53.89|0|98|0|0|435|perf-batt-PIR-reed-light|22.16|100188|d0 5f f8 89 |b3 01 62 00 |a8 08 00 5c 87 01 
+04/06/20 10:00:15|2142_Middle_EH_FF88.txt|21.86|58.23|0|92|0|0|293|perf-batt-PIR-reed-light|21.93|100229|fc 5f 14 95 |25 01 5c 00 |91 08 00 85 87 01 
+04/06/20 10:00:49|2142_Middle_BattEH_FF18.txt|21.79|53.89|0|98|0|0|336|perf-batt-PIR-reed-light|22.15|100183|e0 5f f8 89 |50 01 62 00 |a7 08 00 57 87 01 
+04/06/20 10:02:07|2142_Middle_BattEH_FF18.txt|21.77|53.8|0|98|0|0|411|perf-batt-PIR-reed-light|22.15|100190|d8 5f b8 89 |9b 01 62 00 |a7 08 00 5e 87 01 
+04/06/20 10:03:21|2142_Middle_BattEH_FF18.txt|21.77|53.8|0|98|0|0|534|perf-batt-PIR-reed-light|22.16|100184|d8 5f b8 89 |16 02 62 00 |a8 08 00 58 87 01 
+04/06/20 10:03:33|2142_Middle_EH_FF88.txt|21.86|58.14|0|92|0|0|396|perf-batt-PIR-reed-light|21.94|100231|fc 5f d4 94 |8c 01 5c 00 |92 08 00 87 87 01 
+04/06/20 10:04:48|2142_Middle_EH_FF88.txt|21.86|58.14|0|92|0|0|467|perf-batt-PIR-reed-light|21.95|100234|fc 5f d4 94 |d3 01 5c 00 |93 08 00 8a 87 01 
+04/06/20 10:06:02|2142_Middle_EH_FF88.txt|21.88|58.04|0|92|0|0|368|perf-batt-PIR-reed-light|21.95|100231|00 60 94 94 |70 01 5c 00 |93 08 00 87 87 01 
+04/06/20 10:06:36|2142_Middle_BattEH_FF18.txt|21.8|53.7|0|98|0|0|472|perf-batt-PIR-reed-light|22.18|100188|e4 5f 78 89 |d8 01 62 00 |aa 08 00 5c 87 01 
+04/06/20 10:09:23|2142_Middle_EH_FF88.txt|-40.0|0.0|0|92|0|0|304|perf-batt-PIR-reed-light|21.95|100240|00 00 00 00 |30 01 5c 00 |93 08 00 90 87 01 
+04/06/20 10:09:53|2142_Middle_BattEH_FF18.txt|21.8|53.8|0|98|0|0|360|perf-batt-PIR-reed-light|22.18|100189|e4 5f b8 89 |68 01 62 00 |aa 08 00 5d 87 01 
+04/06/20 10:10:42|2142_Middle_EH_FF88.txt|-40.0|0.0|0|92|0|0|249|perf-batt-PIR-reed-light|21.95|100233|00 00 00 00 |f9 00 5c 00 |93 08 00 89 87 01 
+04/06/20 10:10:58|2142_Corridor_EH_FF32.txt|21.29|55.79|0|101|1|0|144|perf-batt-PIR-reed-light|21.53|100240|18 5f d4 8e |90 00 65 01 |69 08 00 90 87 01 
+04/06/20 10:12:09|2142_Middle_BattEH_FF18.txt|21.8|53.89|0|98|0|0|430|perf-batt-PIR-reed-light|22.17|100189|e4 5f f8 89 |ae 01 62 00 |a9 08 00 5d 87 01 
+04/06/20 10:12:57|2142_Middle_EH_FF88.txt|-40.0|0.0|0|92|0|0|373|perf-batt-PIR-reed-light|21.95|100231|00 00 00 00 |75 01 5c 00 |93 08 00 87 87 01 
+04/06/20 10:13:22|2142_Middle_BattEH_FF18.txt|21.79|53.89|0|98|0|0|567|perf-batt-PIR-reed-light|22.17|100189|e0 5f f8 89 |37 02 62 00 |a9 08 00 5d 87 01 
+04/06/20 10:14:14|2142_Middle_EH_FF88.txt|21.9|58.23|0|92|0|0|447|perf-batt-PIR-reed-light|21.96|100237|08 60 14 95 |bf 01 5c 00 |94 08 00 8d 87 01 
+No valid voltage found, either a new file, always 0 or a problem
+04/06/20 10:14:39|2142_Door_BattEH_FF17.txt|-40.0|0.0|0|81|0|0|128|perf-batt-PIR-reed-light|22.09|100226|00 00 00 00 |80 00 51 00 |a1 08 00 82 87 01 
+No valid voltage found, either a new file, always 0 or a problem
+04/06/20 10:14:48|2142_Middle_EH_FF56.txt|||0|81|0|0|517|perf-batt-PIR-reed-light||||05 02 51 00 |
+04/06/20 10:15:32|2142_Middle_EH_FF88.txt|21.9|58.23|0|92|0|0|392|perf-batt-PIR-reed-light|21.96|100235|08 60 14 95 |88 01 5c 00 |94 08 00 8b 87 01 
+04/06/20 10:18:40|2142_Middle_BattEH_FF18.txt|21.83|53.89|0|98|0|0|492|perf-batt-PIR-reed-light|22.2|100191|f0 5f f8 89 |ec 01 62 00 |ac 08 00 5f 87 01 
+04/06/20 10:20:48|2142_Middle_EH_FF88.txt|21.91|58.23|0|92|0|0|442|perf-batt-PIR-reed-light|21.99|100239|0c 60 14 95 |ba 01 5c 00 |97 08 00 8f 87 01 
+04/06/20 10:21:00|2142_Middle_BattEH_FF18.txt|21.83|53.89|0|98|0|0|662|perf-batt-PIR-reed-light|22.21|100191|f0 5f f8 89 |96 02 62 00 |ad 08 00 5f 87 01 
+04/06/20 10:24:04|2142_Middle_EH_FF88.txt|21.92|58.23|0|92|0|0|376|perf-batt-PIR-reed-light|22.0|100236|10 60 14 95 |78 01 5c 00 |98 08 00 8c 87 01 
+04/06/20 10:24:15|2142_Middle_BattEH_FF18.txt|21.83|53.99|0|98|0|0|529|perf-batt-PIR-reed-light|22.22|100198|f0 5f 38 8a |11 02 62 00 |ae 08 00 66 87 01 
+04/06/20 10:27:01|2142_Middle_EH_FF56.txt|||0|81|0|0|473|perf-batt-PIR-reed-light||||d9 01 51 00 |
+04/06/20 10:28:19|2142_Middle_EH_FF88.txt|21.92|58.23|0|93|0|0|484|perf-batt-PIR-reed-light|22.0|100234|10 60 14 95 |e4 01 5d 00 |98 08 00 8a 87 01 
+04/06/20 10:28:31|2142_Middle_BattEH_FF18.txt|21.86|53.89|0|98|0|0|600|perf-batt-PIR-reed-light|22.22|100197|fc 5f f8 89 |58 02 62 00 |ae 08 00 65 87 01 
+('checking reboot: ', '0/3600, 5479/86400')
+04/06/20 10:29:32|2142_Middle_EH_FF88.txt|21.94|58.23|0|93|0|0|552|perf-batt-PIR-reed-light|22.01|100239|18 60 14 95 |28 02 5d 00 |99 08 00 8f 87 01 
+04/06/20 10:29:48|2142_Middle_BattEH_FF18.txt|21.86|53.89|0|98|0|0|728|perf-batt-PIR-reed-light|22.24|100194|fc 5f f8 89 |d8 02 62 00 |b0 08 00 62 87 01 
+04/06/20 10:30:49|2142_Middle_EH_FF88.txt|21.96|58.23|0|92|0|0|490|perf-batt-PIR-reed-light|22.03|100241|20 60 14 95 |ea 01 5c 00 |9b 08 00 91 87 01 
+04/06/20 10:31:05|2142_Middle_BattEH_FF18.txt|21.9|53.89|0|98|0|0|624|perf-batt-PIR-reed-light|22.26|100194|08 60 f8 89 |70 02 62 00 |b2 08 00 62 87 01 
+04/06/20 10:32:07|2142_Middle_EH_FF88.txt|21.96|58.23|0|92|0|0|435|perf-batt-PIR-reed-light|22.03|100241|20 60 14 95 |b3 01 5c 00 |9b 08 00 91 87 01 
+04/06/20 10:34:20|2142_Middle_BattEH_FF18.txt|21.92|53.89|0|98|0|0|566|perf-batt-PIR-reed-light|22.3|100192|10 60 f8 89 |36 02 62 00 |b6 08 00 60 87 01 
+04/06/20 10:36:20|2142_Middle_EH_FF88.txt|21.98|58.23|0|93|0|0|348|perf-batt-PIR-reed-light|22.05|100244|28 60 14 95 |5c 01 5d 00 |9d 08 00 94 87 01 
+04/06/20 10:36:36|2142_Middle_BattEH_FF18.txt|21.92|53.89|0|98|0|0|464|perf-batt-PIR-reed-light|22.3|100199|10 60 f8 89 |d0 01 62 00 |b6 08 00 67 87 01 
+04/06/20 10:38:37|2142_Middle_EH_FF88.txt|21.96|58.23|0|93|0|0|406|perf-batt-PIR-reed-light|22.02|100241|20 60 14 95 |96 01 5d 00 |9a 08 00 91 87 01 
+04/06/20 10:38:54|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|543|perf-batt-PIR-reed-light|22.25|100207|00 00 00 00 |1f 02 62 00 |b1 08 00 6f 87 01 
+04/06/20 10:39:55|2142_Middle_EH_FF88.txt|21.94|58.23|0|93|0|0|337|perf-batt-PIR-reed-light|22.01|100250|18 60 14 95 |51 01 5d 00 |99 08 00 9a 87 01 
+04/06/20 10:40:11|2142_Middle_BattEH_FF18.txt|21.83|53.89|0|98|0|0|484|perf-batt-PIR-reed-light|22.22|100209|f0 5f f8 89 |e4 01 62 00 |ae 08 00 71 87 01 
+04/06/20 10:43:13|2142_Middle_EH_FF88.txt|21.94|58.14|0|93|0|0|451|perf-batt-PIR-reed-light|22.01|100252|18 60 d4 94 |c3 01 5d 00 |99 08 00 9c 87 01 
+04/06/20 10:43:25|2142_Middle_BattEH_FF18.txt|21.82|53.89|0|98|0|0|610|perf-batt-PIR-reed-light|22.2|100206|ec 5f f8 89 |62 02 62 00 |ac 08 00 6e 87 01 
+04/06/20 10:44:46|2142_Middle_BattEH_FF18.txt|21.84|53.8|0|98|0|0|696|perf-batt-PIR-reed-light|22.22|100218|f4 5f b8 89 |b8 02 62 00 |ae 08 00 7a 87 01 
+04/06/20 10:45:30|2142_Middle_EH_FF88.txt|21.98|58.04|0|93|0|0|353|perf-batt-PIR-reed-light|22.03|100262|28 60 94 94 |61 01 5d 00 |9b 08 00 a6 87 01 
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+04/06/20 10:46:07|2142_Middle_BattEH_FF18.txt|||0|98|0|0|581|perf-batt-PIR-reed-light|22.23|100216||45 02 62 00 |af 08 00 78 87 01 
+04/06/20 10:46:51|2142_Middle_EH_FF88.txt|21.98|58.04|0|93|0|0|525|perf-batt-PIR-reed-light|22.05|100252|28 60 94 94 |0d 02 5d 00 |9d 08 00 9c 87 01 
+04/06/20 10:47:25|2142_Middle_BattEH_FF18.txt|21.9|53.61|0|98|0|0|662|perf-batt-PIR-reed-light|22.26|100212|08 60 3c 89 |96 02 62 00 |b2 08 00 74 87 01 
+04/06/20 10:48:09|2142_Middle_EH_FF88.txt|22.0|57.94|0|93|0|0|440|perf-batt-PIR-reed-light|22.09|100256|30 60 54 94 |b8 01 5d 00 |a1 08 00 a0 87 01 
+04/06/20 10:48:44|2142_Middle_BattEH_FF18.txt|21.92|53.51|0|98|0|0|582|perf-batt-PIR-reed-light|22.31|100212|10 60 fc 88 |46 02 62 00 |b7 08 00 74 87 01 
+04/06/20 10:49:25|2142_Middle_EH_FF88.txt|22.03|57.94|0|93|0|0|528|perf-batt-PIR-reed-light|22.12|100262|3c 60 54 94 |10 02 5d 00 |a4 08 00 a6 87 01 
+04/06/20 10:49:37|2144_Door_EH_FF34.txt|21.11|57.31|0|86|0|0|203|perf-batt-PIR-reed-light|21.36|100235|d0 5e b4 92 |cb 00 56 00 |58 08 00 8b 87 01 
+04/06/20 10:50:03|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|658|perf-batt-PIR-reed-light|22.36|100214|00 00 00 00 |92 02 62 00 |bc 08 00 76 87 01 
+04/06/20 10:50:42|2142_Middle_EH_FF88.txt|22.05|57.85|0|93|0|0|422|perf-batt-PIR-reed-light|22.13|100264|44 60 18 94 |a6 01 5d 00 |a5 08 00 a8 87 01 
+04/06/20 10:51:20|2142_Middle_BattEH_FF18.txt|22.02|53.22|0|98|0|0|492|perf-batt-PIR-reed-light|22.39|100215|38 60 3c 88 |ec 01 62 00 |bf 08 00 77 87 01 
+04/06/20 10:52:02|2142_Middle_EH_FF88.txt|22.06|57.75|0|93|0|0|647|perf-batt-PIR-reed-light|22.15|100266|48 60 d8 93 |87 02 5d 00 |a7 08 00 aa 87 01 
+04/06/20 10:52:37|2142_Middle_BattEH_FF18.txt|22.03|53.13|0|98|0|0|826|perf-batt-PIR-reed-light|22.4|100222|3c 60 00 88 |3a 03 62 00 |c0 08 00 7e 87 01 
+04/06/20 10:53:21|2142_Middle_EH_FF88.txt|22.06|57.65|0|93|0|0|595|perf-batt-PIR-reed-light|22.13|100257|48 60 98 93 |53 02 5d 00 |a5 08 00 a1 87 01 
+04/06/20 10:53:27|2142_Corridor_EH_FF32.txt|21.3|55.99|0|101|1|0|148|perf-batt-PIR-reed-light|21.53|100271|1c 5f 54 8f |94 00 65 01 |69 08 00 af 87 01 
+04/06/20 10:53:54|2142_Middle_BattEH_FF18.txt|22.02|53.03|0|98|0|0|693|perf-batt-PIR-reed-light|22.39|100227|38 60 c0 87 |b5 02 62 00 |bf 08 00 83 87 01 
+04/06/20 10:54:28|2144_Door_EH_FF34.txt|21.14|57.02|0|86|1|0|183|perf-batt-PIR-reed-light|21.4|100244|dc 5e f8 91 |b7 00 56 01 |5c 08 00 94 87 01 
+connect error: Function not implemented (38)
+Traceback (most recent call last):
+  File "conversion_func.py", line 74, in <module>
+    hum_conversion()
+  File "conversion_func.py", line 35, in hum_conversion
+    rawT_1 = int(raw_hum_bytes[1], 16)
+IndexError: list index out of range
+04/06/20 10:54:45|2142_Middle_EH_FF88.txt|||0|93|0|0|447|perf-batt-PIR-reed-light|22.13|100260||bf 01 5d 00 |a5 08 00 a4 87 01 
+04/06/20 10:55:15|2142_Middle_BattEH_FF18.txt|21.98|53.13|0|98|0|0|634|perf-batt-PIR-reed-light|22.35|100218|28 60 00 88 |7a 02 62 00 |bb 08 00 7a 87 01 
+04/06/20 10:57:42|2142_Door_EH_FF87.txt|21.69|62.35|0|64|0|0|178|perf-batt-PIR-reed-light|21.85|100275|b8 5f 9c 9f |b2 00 40 00 |89 08 00 b3 87 01 
+04/06/20 10:58:19|2142_Door_EH_FF53.txt|||0|98|0|0|121|perf-batt-PIR-reed-light||||79 00 62 00 |
+('checking reboot: ', '0/3600, 7380/86400')
+04/06/20 11:03:37|2142_Middle_BattEH_FF18.txt|-40.0|0.0|0|98|0|0|772|perf-batt-PIR-reed-light|22.39|100224|00 00 00 00 |04 03 62 00 |bf 08 00 80 87 01 
