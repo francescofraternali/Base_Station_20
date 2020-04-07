@@ -5,8 +5,18 @@ Traceback (most recent call last):
     devices = scanner.scan(arg.timeout)
   File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 853, in scan
     self.process(timeout)
-  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 821, in process
-    resp = self._waitResp(['scan', 'stat'], remain)
-  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 342, in _waitResp
-    fds = self._poller.poll(timeout*1000)
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 842, in process
+    self.delegate.handleDiscovery(dev, (dev.updateCount <= 1), isNewData)
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/blescan.py", line 89, in handleDiscovery
+    for (sdid, desc, val) in dev.getScanData():
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 774, in getScanData
+    for sdid in self.scanData.keys() ]
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 761, in getValueText
+    val = self.getValue(sdid)
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 756, in getValue
+    return self._decodeUUIDlist(val,16)
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 732, in _decodeUUIDlist
+    result.append(self._decodeUUID(val[i:i+nbytes],nbytes))
+  File "/usr/local/lib/python2.7/dist-packages/bluepy/btle.py", line 725, in _decodeUUID
+    rs = ("%02X" % bval[i]) + rs
 KeyboardInterrupt

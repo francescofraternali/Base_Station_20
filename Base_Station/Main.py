@@ -273,13 +273,13 @@ while(True):
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)  #sometimes this could stuck in this loop so let's write down the file
     sleep(3.5)
     found = []
-    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 5:
+    if (os.stat('dev_found.txt').st_size < 2) or (os.stat('ble_err.txt').st_size > 1) or detector_error > 2:
         print('dev_found empty or blescan error')
         print("dev_found size: ", os.stat('dev_found.txt').st_size)
         print('blescan stderr file dimension: ', os.stat('ble_err.txt').st_size)
         print("detector_error: ", detector_error, " count_empty: ", count_empty)
         sleep(5)
-        if count_empty >= 10 or detector_error > 5:
+        if count_empty >= 10 or detector_error > 2:
             print('List Empty. No devices found or detector_error positive for a while. Rebooting BS.')
             subprocess.Popen('sudo reboot', shell=True)
         else:
@@ -330,7 +330,7 @@ while(True):
                                      detector_error += 1
                                      print('something wrong, detector_error: ', detector_error)
                                      sleep(12)
-                                     if detector_error > 2: # oherwise let's put 2
+                                     if detector_error > 1: # oherwise let's put 2
                                          subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
                                          print('something wrong, resetting')
                                          sleep(5)
