@@ -123,8 +123,8 @@ Occupancy()
 	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
 
-    	echo "${dt}|${log}|${temp_hum_sens}|${hum_hum_sens}|${perf}|${batt}|${PIR}|${reed}|${light}|${info}|${temp_bar_sens}|${bar_bar_sens}|${raw_hum_data}|${raw_temp_data}|${raw_bar_data}" # pr
-        printf "\n${dt}|${log}|${temp_hum_sens}|${hum_hum_sens}|${perf}|${batt}|${PIR}|${reed}|${light}|${info}|${temp_bar_sens}|${bar_bar_sens}|${raw_hum_data}|${raw_temp_data}|${raw_bar_data}" >> $File #prints $
+    	echo "${dt}|${log}|${temp_hum_sens}|${hum_hum_sens}|${perf}|${batt}|${PIR}|${reed}|${light}|${info}|${temp_bar_sens}|${bar_bar_sens}|${raw_hum_data}|${raw_temp_data}|${raw_bar_data}|${Action_1}|${Action_2}|${Action_3}|" # pr
+        printf "\n${dt}|${log}|${temp_hum_sens}|${hum_hum_sens}|${perf}|${batt}|${PIR}|${reed}|${light}|${info}|${temp_bar_sens}|${bar_bar_sens}|${raw_hum_data}|${raw_temp_data}|${raw_bar_data}|${Action_1}|${Action_2}|${Action_3}|" >> $File #prints $
 
         echo "2" > wait.txt
 	#		sleep 10
