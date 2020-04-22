@@ -138,13 +138,14 @@ def heuristic_energy_manag(ID):
             line = line.strip()
             splt = line.split(',')
             if Name == splt[0]:
+                Action_3 = splt[4]
 		exist = os.path.isfile("../Data/"+splt[1])
-                if exist:
+                if Action_3 == '-1':
+                    Action_1 = '3C'; Action_2 = '01'; found = 1
+                elif exist:
 		    for line in reversed(list(open("../Data/"+splt[1]))):
                         line_splt = line.split('|')
-                        #print(line)
                         try:
-			    volt_str = line_splt[5]
                             volt = int(line_splt[5])
 			except:
 			    #print("line: ", line , ". volt string: ", volt_str, ". Problem, check")
@@ -152,29 +153,26 @@ def heuristic_energy_manag(ID):
 
                         if volt >= 90:
 			    Action_1 = 'BC'; Action_2 = '0B';
-			elif volt < 90 and volt >= 75:
+			elif volt >= 75 and volt < 90:
 	                    Action_1 = 'BC'; Action_2 = '09';
-		        elif volt < 75 and volt >= 65:
+		        elif volt >= 65 and volt < 75:
 		            Action_1 = '3C'; Action_2 = '03';
                         else:
                             Action_1 = '3C'; Action_2 = '01';
-		            #print(Name, volt)
                         if volt > 0:
                             found = 1
                             #print("final line: ", line)
 			    break
 
-                if found == 0: # it should not get here
+                if found == 0: # it should not get here. Put the maximum availble so it will talk sooner with the BS and tell what to do
                     print("No valid voltage found, either a new file, always 0 or a problem") 
-                    Action_1 = '8C'; Action_2 = '03'; volt = 0
+                    Action_1 = 'BC'; Action_2 = '0B'; volt = 0
 
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
                     Action_1 = 'BC'; Action_2 = '0B';
                     #print(Name, Action_1, Action_2) 
                 break
-    #Action_1 = '8A'; Action_2 = '01'; 
-    Action_3 = splt[4]
     #print(Name, volt, Action_1, Action_2, Action_3) 
 
     return (Action_1, Action_2, Action_3, Name, File)
