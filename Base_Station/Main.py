@@ -113,7 +113,7 @@ while(True):
                         else:
                             if detector_error > 0: 
                                 print("reset detector_error")
-                            detector_error -= 1
+                            	detector_error -= 1
 
     #print("found", found)
     if len(avoid) > 0:
