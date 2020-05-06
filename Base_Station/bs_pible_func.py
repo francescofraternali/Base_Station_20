@@ -75,6 +75,7 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
             splt = line.split(',')
             if Name == splt[0]:
                 Action_3 = splt[4]
+                Action_3_orig = Action_3
                 exist = os.path.isfile("../Data/"+splt[1])
                 if Action_3 == '-1':
                     Action_1 = '3C'; Action_2 = '01'; found = 1
@@ -106,7 +107,7 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
 
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
-                    Action_1 = 'BC'; Action_2 = '0B';
+                    Action_1 = 'BC'; Action_2 = '0B'; Action_3 = Action_3_orig
                     #print(Name, Action_1, Action_2)
                 break
     #print(Name, volt, Action_1, Action_2, Action_3)
