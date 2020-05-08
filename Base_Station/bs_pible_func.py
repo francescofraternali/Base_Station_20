@@ -3,6 +3,7 @@ import os
 from time import sleep
 import datetime
 import json
+import time
 
 def initialization():
     ID_List = []; Name_List = []; File_List = []
@@ -53,7 +54,8 @@ def file_valid(ID, ID_List, Name_List, File_List):
     #print("../ID/" + Name + "_action.json")
     if os.path.exists("../ID/" + Name + "_action.json"):
         #print("here out")
-        temp_sec = os.path.getmtime("../ID/" + Name + '_action.json')
+        temp_sec = time.time() - os.path.getmtime("../ID/" + Name + '_action.json')
+        #temp_sec = time.time() - os.path.getmtime(filename))//60
         if temp_sec < 60*60*6: # 6 hours
             #print("here")
             return True
@@ -104,11 +106,12 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
                 if found == 0: # it should not get here. Put the maximum availble so it will talk sooner with the BS and tell what to do
                     print("No valid voltage found, either a new file, always 0 or a problem")
                     Action_1 = 'BC'; Action_2 = '0B'; volt = 0
-
                 file_splt = splt[1].split('_') # for Battery sensors let's leave all On
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
                     Action_1 = 'BC'; Action_2 = '0B'; Action_3 = Action_3_orig
                     #print(Name, Action_1, Action_2)
+                if Action_3 == '0':  # Not need to use the sensing
+                    Action_2 = '01'
                 break
     #print(Name, volt, Action_1, Action_2, Action_3)
 
@@ -128,6 +131,9 @@ def get_actions(ID, ID_List, Name_List, File_List):
         Action_1 = actions["Action_1"]
         Action_2 = actions["Action_2"]
         Action_3 = actions["Action_3"]
+
+        if Action_3 == '0' or Action_3 == '-1':
+            Action_2 = '01'
 
     return Action_1, Action_2, Action_3, Name, File
 

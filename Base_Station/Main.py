@@ -76,6 +76,7 @@ while(True):
                         #Action_1, Action_2, Action_3, Name, File = get_action_name(ID)
                         if file_valid(ID, ID_List, Name_List, File_List):
                             Action_1, Action_2, Action_3, Name, File = get_actions(ID, ID_List, Name_List, File_List)
+                            print("selecting RL action")
                         else:
 			    Action_1, Action_2, Action_3, Name, File = heuristic_energy_manag(ID, ID_List, Name_List, File_List)
 
