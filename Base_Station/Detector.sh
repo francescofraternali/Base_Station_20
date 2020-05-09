@@ -123,7 +123,8 @@ Occupancy()
 		reqhum
 		reqbar
 	fi
-        if [ $Action_3 == "-1"]; then
+
+        if [ $Action_3 == "-1" ]; then
                 reqhumstop
         fi
 
