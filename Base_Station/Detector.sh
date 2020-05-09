@@ -55,9 +55,14 @@ reqhum(){	#Humidity sensor
 	#/bin/echo "hum_raw_data: " ${raw_hum_data} # raw hum bytes from sensortag
 	hum="$(python conversion_func.py hum "${raw_hum_data}")" # Converts raw_hum_data to celsius
 	IFS='|' read -ra ADDR <<< "$hum"
-	
-	temp_hum_sens=${ADDR[0]}
+
+        temp_hum_sens=${ADDR[0]}
 	hum_hum_sens=${ADDR[1]}
+}
+
+reqhumstop(){
+        sudo gatttool -b $ID --char-write-req -a 0x2C -n $Action_2 > /dev/null 2>&1 #initiates (0x44)
+        sleep 0.5
 }
 
 #reqinfo(){
@@ -94,7 +99,7 @@ reqbar(){
         outputPrefix="Characteristic value/descriptor: "
         raw_bar_data=${barOutput#$outputPrefix} #Removes prefix of luxOutput
         bar="$(python conversion_func.py bar "${raw_bar_data}")" # Converts raw_bar_data to celsius
-        
+
         IFS='|' read -ra ADDR <<< "$bar"
 
         temp_bar_sens=${ADDR[0]}
@@ -118,6 +123,10 @@ Occupancy()
 		reqhum
 		reqbar
 	fi
+        if [ $Action_3 == "-1"]; then
+                reqhumstop
+        fi
+
         reqtemp
 
 	#Write Data
