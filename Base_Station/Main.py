@@ -93,14 +93,22 @@ while(True):
                         #Action = "00000000"
 
                         #proc = subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " 2>error.txt &", stdout=subprocess.PIPE, shell=True)
-                        proc = subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " &", stdout=subprocess.PIPE, shell=True)
+                        proc = subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action_1 + " " + Action_2 + " " + Action_3 + " " + log + " &", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
                         (out, err) = proc.communicate()
+
+                        if err != '':
+                            print("err ", err)
+                            err_strip = err.strip()
+                            err_split = err_strip.split(' ')
+                            if '(38)' in err_split:
+                                detector_error += 5
+
                         toprint = out.split('\n')
                         print(toprint[0])
                         splitt = toprint[0].split('|')
                         error = 'list index out of range'
                         if splitt[2] == error or splitt[4] == error or splitt[10] == error:
-                                     #print("error detected") 
+                                     #print("error detected")
                                      #contain = line.strip().split(' ')
                                 #if (len(line.strip()) > 0) and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain: # and '(38)' not in contain 
                                      detector_error += 1
@@ -112,7 +120,7 @@ while(True):
                                          sleep(5)
                                      break
                         else:
-                            if detector_error > 0: 
+                            if detector_error > 0:
                                 print("reset detector_error")
                             	detector_error -= 1
 
@@ -120,7 +128,7 @@ while(True):
     if len(avoid) > 0:
         #print('remove avoiding last ID')
         for ID in ID_List:
-            if ID in avoid:     
+            if ID in avoid:
                 avoid.remove(ID)
                 #print('removing ', ID)
 
