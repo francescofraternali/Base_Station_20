@@ -50,7 +50,7 @@ while(True):
         print('blescan stderr file dimension: ', os.stat('ble_err.txt').st_size)
         print("detector_error: ", detector_error, " count_empty: ", count_empty)
         sleep(5)
-        if count_empty >= 10 or detector_error > 2:
+        if count_empty >= 5 or detector_error > 2:
             print('List Empty. No devices found or detector_error positive for a while. Rebooting BS.')
             subprocess.Popen('sudo reboot', shell=True)
         else:
@@ -75,7 +75,7 @@ while(True):
                         found.append(ID)
                         #Action_1, Action_2, Action_3, Name, File = get_action_name(ID)
                         if file_valid(ID, ID_List, Name_List, File_List):
-                            Action_1, Action_2, Action_3, Name, File = get_actions(ID, ID_List, Name_List, File_List)
+                            Action_1, Action_2, Action_3, Name, File = get_RL_actions(ID, ID_List, Name_List, File_List)
                             #print("selecting RL action")
                         else:
 			    Action_1, Action_2, Action_3, Name, File = heuristic_energy_manag(ID, ID_List, Name_List, File_List)

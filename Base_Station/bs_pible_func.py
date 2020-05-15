@@ -93,9 +93,9 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
                         if volt >= 90:
                             Action_1 = 'BC'; Action_2 = '0B';
                         elif volt >= 75 and volt < 90:
-                            Action_1 = 'BC'; Action_2 = '09';
+                            Action_1 = 'BC'; Action_2 = '01';
                         elif volt >= 65 and volt < 75:
-                            Action_1 = '3C'; Action_2 = '03';
+                            Action_1 = '3C'; Action_2 = '01';
                         else:
                             Action_1 = '3C'; Action_2 = '01'; Action_3 = '-1'
                         if volt > 0:
@@ -110,7 +110,7 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
                     Action_1 = 'BC'; Action_2 = '0B'; Action_3 = Action_3_orig
                     #print(Name, Action_1, Action_2)
-                if Action_3 == '0':  # Not need to use the sensing
+                if Action_3 == '0':  # Not need to use the sensing even if it is batter-powered
                     Action_2 = '01'
                 break
     #print(Name, volt, Action_1, Action_2, Action_3)
@@ -118,7 +118,7 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
     return (Action_1, Action_2, Action_3, Name, File)
 
 
-def get_actions(ID, ID_List, Name_List, File_List):
+def get_RL_actions(ID, ID_List, Name_List, File_List):
     for i in range(len(ID_List)):
         if ID == ID_List[i]:
             Name = Name_List[i]
