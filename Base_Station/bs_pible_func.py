@@ -110,7 +110,7 @@ def heuristic_energy_manag(ID, ID_List, Name_List, File_List):
                 if 'Batt' in file_splt or 'BattEH' in file_splt:
                     Action_1 = 'BC'; Action_2 = '0B'; Action_3 = Action_3_orig
                     #print(Name, Action_1, Action_2)
-                if Action_3 == '0':  # Not need to use the sensing even if it is batter-powered
+                if Action_3 == '0':  # Not need to use the sensing even if it is batter-powered. So let's use 01 in case
                     Action_2 = '01'
                 break
     #print(Name, volt, Action_1, Action_2, Action_3)
